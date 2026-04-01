@@ -1,0 +1,859 @@
+Hello guys.
+
+So we are going to continue our discussion with respect to our DAGs.
+
+And now what we are going to do is that we are going to show you that how we can use DVC along with
+
+DAGs hub, which will provide a powerful way to version, manage and collaborate on data science and
+
+machine learning project.
+
+Uh, if you don't know about DVC again, I have already covered those particular module.
+
+Uh, it provides it integrates git and DVC together, you know, and through this you will be able to
+
+track changes even in your code and even in your data, because git tracks your code and DVC basically
+
+tracks your data.
+
+And finally you will also be seeing MLflow basically tracks your experiment.
+
+Now, already we have created this entire repository.
+
+Now what I'm actually going to do is that I'll just go ahead and open my command prompt.
+
+Okay.
+
+Now to start with what I'll do, I'll go to my e drive.
+
+I have created a folder which is called as MLOps okay.
+
+And inside this I have created this DVC folder.
+
+Okay.
+
+So you can also probably go ahead and create this DVC folder.
+
+Otherwise you can just do it from the command prompt itself.
+
+So just imagine that in this particular folder location I've created this DVC folder.
+
+Now what I will do I will go ahead and first of all get started with the code.
+
+So first of all you need to see that I have to clone this.
+
+Okay.
+
+So we will just go ahead and clone this.
+
+So here I'm just going to go ahead and write clone okay.
+
+Now once you uh write clone.
+
+So here you can see it is showing.
+
+Hey, uh, you appear to have cloned an empty repository.
+
+So if I probably go ahead and see, there will be something called as CD demo dash hub.
+
+Right.
+
+So this this specific repository will be there.
+
+And this is where I want to probably go ahead and start my project.
+
+Now from here what I will do, I will just go ahead and open my uh vs code.
+
+So let me just go ahead and write code dot and then press press enter.
+
+Okay.
+
+Now once I press enter you will be able to see that my VS code may have opened.
+
+Let me just drag and drop it over here.
+
+Okay.
+
+And this is basically my entire project name okay.
+
+Now the first thing what I'm actually going to do over here is that, uh, since I've actually created
+
+this.
+
+Okay, I will go ahead and open my terminal.
+
+Okay.
+
+And as you all know.
+
+So let me just go ahead and minimize this here.
+
+I'm going inside my demo dash hub repository.
+
+Now I'll just go ahead and add one Readme file.
+
+Okay.
+
+So what we are going to do is that we are just going to go ahead and create one readme file.
+
+So let's create one readme file so that at least we'll have something to commit inside it.
+
+Okay, so Readme file is there.
+
+Okay.
+
+I will uh, go ahead and say git.
+
+Uh, sorry, I will not work in PowerShell.
+
+I'll work in command prompt.
+
+Okay.
+
+Command prompt or git bash whatever you want.
+
+So I'll just go ahead and write git add README.md file.
+
+So I'm basically adding this particular file.
+
+And all the steps are basically given over here right.
+
+Great.
+
+Add readme.
+
+Then we will go ahead and do our first commit.
+
+Okay.
+
+And this we have already learned learned learned in the git git tutorials right?
+
+So we have probably we have done the first commit and now we'll go ahead and take a branch.
+
+We'll create a branch which is main.
+
+And finally we will go ahead and push the readme file into from um origin to the main.
+
+Okay.
+
+So once this is done, you'll be able to see that main set to track remote branch from origin.
+
+Okay, so if I just go ahead and just reload it here, you'll be able to see that I will be able to
+
+see my first file.
+
+So here it is saying hey do you want to generate an image for your project.
+
+I'll say no thank you.
+
+So here you will be able to see that my readme file is coming, right?
+
+So at least your track, your code has got enabled because we are doing it with the help of git get
+
+versioning.
+
+Right.
+
+So we are leveraging those functionalities from git.
+
+So right right now you can see that there is a tick okay.
+
+But our main aim over here is to work with some kind of data.
+
+Right.
+
+And since I need to upload some kind of data over here.
+
+So let me do one thing okay.
+
+Let me go ahead and open my VSCode.
+
+Okay, first of all, uh, till here I have done it.
+
+Let me do one thing.
+
+Let me open my terminal.
+
+And this time I will just first of all, create a environment, virtual environment, because I need
+
+to install DVC, DAGs hub and all inside this.
+
+Okay, so what I will do in order to install an environment conda create minus p v env python double
+
+equal to 3.10.
+
+Um we are specifically using this command.
+
+That is conda create minus p v env this minus p v and v.
+
+Why we are using because we are saying that.
+
+Hey create this particular v and v folder here itself okay.
+
+And we will be tracking for that particular location as a virtual environment.
+
+Then I'm going to use Python 3.10 as my environment.
+
+And I'll say yes if it asks me for any installation and all.
+
+So here you can see that all the installation will start taking place now till this environment is basically
+
+getting created.
+
+Let me just go ahead and create one requirements.txt file.
+
+Okay.
+
+Uh, this is one file that I really want to create.
+
+The other file is nothing but dot git ignore, which I will be using it because here I will be writing
+
+my v and v environment so that it does not get tracked.
+
+Okay.
+
+So this is my git ignore.
+
+And since I have written my v and v let's see v and v, I think it is the folder okay.
+
+Till this is getting installed.
+
+So here you can see my v and v is not getting tracked.
+
+Now it is away from that green mark right.
+
+So I have my git ignore.
+
+I have my readme file which is already committed.
+
+And right now I'm basically going ahead with the installation.
+
+Okay, so till here everything looks good.
+
+We are in the progress of doing some amazing work over here.
+
+Now in the requirements.txt let me go ahead and put two different library.
+
+One is DAGs hub and the one other one is something called as DVC.
+
+DVC will basically help us to maintain our, uh, do the versioning of our data and all.
+
+So once I create this particular environment, v and V, I will go ahead and import this.
+
+Sorry.
+
+I'll go ahead and activate this environment.
+
+Now, in order to activate from this terminal.
+
+Okay.
+
+I will just go ahead and write Conda activate Venv.
+
+Okay.
+
+And I'll put forward slash.
+
+So once I activate this, this will get activated over here.
+
+So now you can see I'm inside my venv.
+
+Now if you go here, over here.
+
+And if you open git bash.
+
+Okay, I'll also show you how you can activate your, uh, virtual environment from the git bash also.
+
+So for here you will really need to write source activate v, e and v.
+
+Okay.
+
+So once you write source activate v and v automatically that environment will get activated.
+
+So I've shown you both from command prompt how you can actually do it from bash, how you can actually
+
+do it.
+
+Now I'll still be there in my command prompt.
+
+Okay.
+
+I will go ahead and install.
+
+My requirements are requirements.txt.
+
+Okay, so now I will be installing Dash hub and DVC because now we are going to go ahead and start with
+
+our uh, DVC functionality.
+
+So this is still this is getting installed.
+
+Okay.
+
+What I will do I will also go ahead and create one data folder.
+
+Okay.
+
+Now this data folder.
+
+What why.
+
+The reason why I'm creating is that because inside this data folder I will go ahead and put one data
+
+dot csv.
+
+Okay so I'm copying one file.
+
+And this is what my file looks like.
+
+This is a diabetes data set.
+
+You know uh based on various parameters, we need to predict the outcome, whether the person is having
+
+the diabetes or not.
+
+Okay.
+
+But that is a machine learning project.
+
+But here I'm going to use this specific data.
+
+And with the help of DVC, I'm going to probably go ahead and track each and everything.
+
+Okay.
+
+Now till here.
+
+Everything I hope is very much clear.
+
+Okay.
+
+Um, now what I'm actually going to do is that I'll just go ahead and initialize DVC now.
+
+Okay.
+
+So in order to initialize DVC.
+
+So right now we have just initialized with GitHub uh get tutorial.
+
+Sorry get because we have cloned from the repository.
+
+But what we are basically going to do after this is that we are going to initialize DVC so that we can
+
+use it.
+
+Okay.
+
+And I have already made sure that we have used a data set, and we'll try to see how we can track this
+
+in the remote repository in the DAGs hub.
+
+That is the most important thing that we are going to discuss over here.
+
+Okay.
+
+So this is taking some amount of time.
+
+So finally guys.
+
+So here you can see the installation of the library has got completed.
+
+Now I will just go ahead and clear my screen.
+
+Now our main aim is basically to track this entire versioning of the data over here.
+
+And I also need to make sure that I will push all this versioning information inside my Dag sub repository,
+
+which we have created.
+
+Okay.
+
+So to start with, what we are going to do is that we need to initialize DVC.
+
+So I will go ahead and write DVC init as soon as I go ahead and execute this.
+
+Here you can see that DVC has enabled anonymous aggregator uses analytics.
+
+All this information is basically getting displayed.
+
+And if you open your uh browser sorry or your code, your open editor code side over here.
+
+You'll be able to see that.
+
+Um, here you will be having something called as dot DVC folder.
+
+And here you have this dot get ignore.
+
+Here you have this config.
+
+And here you have this data data dot CSV.
+
+Right.
+
+So all this is basically getting tracked now.
+
+Now in order to track anything by DVC okay.
+
+Right now it is being tracked by git okay.
+
+But if you want anything to be tracked with DVC, what you can basically do is that over here I will
+
+just go ahead and write what I really need to track.
+
+I will write DVC, uh, and what you really need to track over here.
+
+I will go ahead and write my data folder data slash data dot CSV.
+
+Right.
+
+So I'm basically tracking this particular uh file file or this particular data set.
+
+So once I execute it here you'll be able to see that to track the changes with git run.
+
+So we have to uh as soon as I tracked something with DVC.
+
+Right.
+
+So this git ignore and data dot csv dot DVC file is basically getting created.
+
+And this you have already seen in the previous folder previous module.
+
+Right?
+
+And I have explained about each and everything over here.
+
+Okay.
+
+Till then I'll just close all this browser because I don't require it okay.
+
+Now once we go ahead and create all these things, now what I'll be doing is that along with this,
+
+uh, since we have, uh, made sure that we have added we are tracking this particular data.
+
+After this, we'll also go ahead and track this dot git ignore and data dot csv dot dvc by git itself.
+
+Okay.
+
+Because there if I probably open this right, there is something called as MD5.
+
+So we need to really track this with the help of GitHub.
+
+Okay.
+
+So here what I will do I will go ahead and write git add data slash dot git ignore okay.
+
+And data slash data dot csv dot dvc okay.
+
+So I'll go ahead and execute this okay.
+
+Now it is basically getting tracked by git.
+
+So it is in the append mode.
+
+Append mode okay.
+
+And finally I will just go ahead and write great git commit minus m added data dot csv with DVC.
+
+Okay, so once I execute it here you can see create mode.
+
+Everything is basically getting added.
+
+Okay.
+
+And uh, now since we are tracking this entirely with the help of git and DVC, we will finally push
+
+all these things inside our demo DAGs hub repository.
+
+Right?
+
+Now how do we push it?
+
+Okay.
+
+Now in order to push it, you know, you first of all need to go ahead and see on remote okay.
+
+In remote you have three important information.
+
+One is with respect to code.
+
+One is with respect to data and one is with respect to experiments.
+
+Now, since we are working with the help of data right.
+
+And inside data, we are not using DAGs of client.
+
+Instead we are using DVC.
+
+So in DVC what you can do is that any tracking you can probably store it uh, the, the remote repository,
+
+specifically the DAGs, the remote repository provides you some bucket.
+
+Okay.
+
+And this is what you really need to set up, right?
+
+I need to go ahead and set up my DVC hub DVC remote, where I need to store all my data information
+
+so that the versioning of that particular data will happen.
+
+So we need to configure it now in order to configure it.
+
+First of all, what we do is that I will go ahead and copy this entire thing.
+
+See it is saying add the DAGs hub DVC remote because this DVC remote is where my entire data information
+
+will basically get stored.
+
+So what I will do, I will just go ahead and copy this.
+
+Okay.
+
+Now this time I'll go ahead and open my browser.
+
+Sorry, my coding environment I will clear the screen.
+
+Let me just go ahead and minimize this.
+
+And uh, let me do one thing.
+
+Let me also do this.
+
+Now here I have pasted it I'm writing DVC remote add origin s3 DVC.
+
+Okay.
+
+Once I add this particular thing then we go ahead and add the next line over here.
+
+Uh DVC remote modify origin and will set up the endpoint URL.
+
+Okay.
+
+So the endpoint URL is nothing but this.
+
+So we need to just go ahead and copy this and paste it in my terminal.
+
+Let's press enter.
+
+Okay.
+
+Now since we are adding this DV DAGs of DVC remote where all the data will basically be stored, all
+
+the versioning of the data information will be stored.
+
+Uh, we need to also go ahead and set up our security credentials.
+
+So first of all, I will go ahead and uh, just click on this eye symbol right so that I'll be able
+
+to see my access key.
+
+So here what I will do I will just go ahead and copy this first line.
+
+Okay.
+
+First line open my code and paste it over here I'll press enter.
+
+Okay.
+
+So this is basically setting up my access key ID.
+
+And here you'll be able to see this DVC remote is basically set up to origin.
+
+Okay.
+
+So with the name of origin.
+
+So you can since we are setting up this DVC remote, the remote name place where we are setting it up
+
+is the origin okay.
+
+Along with this you will also be able to see my.
+
+Another thing that is we are also going to set the secret access key.
+
+So here I will just go ahead and copy it.
+
+Okay I will go ahead and paste it.
+
+Um, I did not get pasted, I guess.
+
+Let's see.
+
+So I will paste this entire information.
+
+Okay.
+
+I'll paste it over here.
+
+Done.
+
+So my access key ID and secret access key is set.
+
+Once I do this set now I know if I just do DVC remote see how many remote list.
+
+If I'll just go ahead and type remote list.
+
+So there is one origin on this particular location and that is what we have actually set it up because
+
+it knows the origin where it needs to save all this information.
+
+It is in this origin, okay, in this location.
+
+And this is internally provided by the repository.
+
+Now what I will do, I will first of all do something something like DVC pull okay minus R.
+
+And I will just go ahead and write origin.
+
+So what pull will basically do is that what is the recent information that is present inside that sub
+
+repository that will come out okay.
+
+That will be over here.
+
+So here it says unexpected S3 three supported but requires DVC S3 right.
+
+So this library is also required.
+
+So let me just go ahead and update my requirement dot txt.
+
+Okay I will just go ahead and write pip install minus r requirements.txt.
+
+So this one library is also required.
+
+Please make sure that you have this.
+
+Otherwise you'll be getting an error.
+
+Because of this library we are able to push the information and pull the information.
+
+So I think it should get installed anyhow.
+
+Internal it is using Boto3 because this is nothing, but it is S3 bucket itself.
+
+Okay.
+
+And DVC is already providing I think ten GB space it actually provides you.
+
+Now I'll write DVC pull.
+
+I think it is minus R origin.
+
+Okay.
+
+One let me just go ahead and execute it.
+
+So collecting and fetching and I hope it should be able to fetch so it is probably fetching and everything
+
+is up to date now.
+
+Whatever it changes is there in my local machine.
+
+I'll try to push that, so I'll write DVC push minus R origin because origin is my remote location,
+
+right?
+
+So once I execute it here, you'll be able to see, see all this information is going over there.
+
+One file pushed right now if I go ahead and see over here has something been pushed over here okay.
+
+So right now still you will not be able to see this.
+
+You will not be able to see it.
+
+Don't worry because I have not done the final get push right.
+
+So let me do one thing.
+
+Let me go ahead and add git push origin to main.
+
+Okay.
+
+So once this push is done now I think I should be able to see it.
+
+Okay.
+
+So here you can see all the information dot DVC and all and see this DVC has got enabled, git has got
+
+enabled.
+
+And the best part is see the data pipeline.
+
+Automatic data pipeline is basically created.
+
+Right.
+
+This is my data dot CSV.
+
+This is my this data dot CSV is nothing, but it is a DVC DVC managed file.
+
+So it is showing in blue color.
+
+Right?
+
+And if I just go ahead and see my data here you can see data dot CSV is nothing but DVC over here.
+
+Right.
+
+And this is my entire data which is basically getting displayed.
+
+And if you want to probably track or see the history, you can probably see in this particular file.
+
+So if you just go ahead and click on history, it will be able to compare with the previous one.
+
+Right.
+
+And this is the recent commit okay.
+
+Now let's say that I want to probably go ahead and see this is the information.
+
+It was previously empty.
+
+Uh data dot CSV is there.
+
+All the information is basically there.
+
+Right.
+
+So here you are able to specifically track each and everything with respect to the data.
+
+Okay.
+
+Now the most important thing is that what if I make some changes in the data okay.
+
+Automatically you will be able to see that.
+
+See I'll just show you okay.
+
+What happens if I make some changes in the data.
+
+So let's say that I remove I'll copy this Or, uh, let me let me just go ahead and remove this three
+
+records.
+
+Okay.
+
+So it will basically start from two.
+
+Okay.
+
+Now here what I will do in order to update this, I will say, hey DVC add data slash data dot csv.
+
+Okay, once I add this again my two files will get changed.
+
+One is data dot c uh csv dot DVC.
+
+Okay, so here you will be able to see this file will get updated right.
+
+This is getting modified right.
+
+And the reason it is getting modified because you get a new MD5 information which is the encrypted key
+
+right.
+
+So here what I will do I will go ahead and write get I will go ahead and write get add dot.
+
+Let's go ahead and add it.
+
+Get commit minus m some message.
+
+Second commit okay I will clear the screen.
+
+Uh and then here I will just go ahead and write DVC push.
+
+Before that let's pull it.
+
+I think, uh, no remote repository, no default remote repository.
+
+No worries.
+
+All right.
+
+Get, uh.
+
+Sorry, DVC pull minus R from origin.
+
+I need to provide this.
+
+Okay, so it is collecting and fetching and we'll say everything is up to date.
+
+Perfect.
+
+Then I will go ahead and write DVC push minus R to origin right.
+
+So once I do this it will go ahead and push all the new information right.
+
+One file push.
+
+Finally get push origin to main.
+
+So all the new information will get tracked over here.
+
+And finally now if I just go ahead and reload it.
+
+So here you can see if I go inside this data.
+
+If I go ahead and see second commit is basically added.
+
+Right.
+
+And here you will be able to see even track it.
+
+If I click on history you'll be able to compare between both of them.
+
+Okay.
+
+And here you can see this is my second comment.
+
+This is my first commit.
+
+And here Sha one is different.
+
+Sha Sha Two is different.
+
+Not only that, you'll also be able to see your entire data file.
+
+Okay.
+
+Entire data file.
+
+Data dot csv.
+
+Okay.
+
+And this is your entire data which you are able to see it over here.
+
+Not only that, if you go ahead and see over here we have also uploaded the data to Dax hub.
+
+So Dax hub remote we have specifically uploaded.
+
+And now we can probably see in different different visualization way like how your entire data pipeline
+
+looks like.
+
+And right now this is a very simple data pipeline.
+
+Because as we go ahead I'll create a more complex data pipeline in the upcoming videos.
+
+Okay.
+
+But here my main goal was to probably talk about like how you can go ahead and start working with DVC
+
+along with Dax hub okay.
+
+And how you can track your code.
+
+Uh, still log experiments is there.
+
+But for this I will again create a new project where all these three things I will try to implement
+
+as an end to end project, which will be quite amazing for you.
+
+So I hope you like this particular video.
+
+This was it from my side.
+
+Uh, this was about DVC with, uh, Dax hub remote repository.
+
+Uh, I'll see you in the next video.
+
+Thank you.

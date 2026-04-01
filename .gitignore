@@ -1,6 +1,6 @@
 mlflow.db
 mlruns
 mlartifacts
-mlflow-venv/
+mlops_venv/
 __pycache__/
 .git
