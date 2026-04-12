@@ -227,6 +227,12 @@ General idea:
 ```bash
 git clone <dagshub_repo_url>
 ```
+If it ask for credentials, then use your 
+1. dagshub username
+2. dagshub access token: 
+    * go to dagshub setting (your profile)
+    * access token
+    * copy the token and paste it as password 
 
 Then move inside the cloned repository:
 
@@ -443,6 +449,11 @@ Copy the secret key from the DagsHub UI and configure it as well.
 ### Step 5: Verify remote setup
 
 Then verify the remote configuration and confirm that `origin` is the configured remote.
+
+```bash
+git remote -v
+dvc status -r <remote-name> (e.g., dvc status -r origin)  # to check connection
+```
 
 ### Important idea
 
@@ -685,3 +696,6 @@ DagsHub helps by giving one place for:
 ## 20. One-line summary
 
 DagsHub is a collaborative MLOps platform that combines Git-based code hosting, DVC-based data versioning, and MLflow-based experiment tracking in one remote repository workflow.
+
+## Code example
+https://dagshub.com/amaresh/demo-dagshub
