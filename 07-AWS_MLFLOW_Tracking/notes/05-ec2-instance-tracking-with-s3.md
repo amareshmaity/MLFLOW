@@ -79,47 +79,23 @@ The idea here is to make sure the machine has:
 
 This is necessary because MLflow and related libraries will be installed next.
 
-## Step 3. Handle `pipenv` Installation Properly
+## Step 3. Install `pipenv`
 
-At first, there is an attempt to install `pipenv` using `pip3`.
-
-Something like:
-
-```bash
-sudo pip3 install pipenv
-```
-
-But this causes an issue because the environment is treated as externally managed.
-
-## What Problem Happens Here
-
-The machine returns a message suggesting that Python packages should be installed through the system package manager instead of directly through `pip3` in that way.
-
-So instead of forcing it, we switch to using `apt`.
-
-## Better Approach Used Here
-
-The setup is adjusted to use:
+To keep the server setup clean, we install `pipenv` using `apt`:
 
 ```bash
 sudo apt install pipenv
 ```
 
-or the equivalent apt-based package installation path.
+## Why We Use `pipenv`
 
-Similarly, `virtualenv` is also installed through `apt`.
+`pipenv` helps us create an isolated environment for the MLflow server inside the EC2 machine.
 
-## Why This Fix Matters
-
-This is a practical reminder that:
-
-- server environments may behave differently from local machines
-- package installation may require small fixes
-- real setup work often involves adjusting commands when the first approach fails
+That makes the server-side setup cleaner and easier to manage.
 
 ## Step 4. Install `virtualenv`
 
-After fixing the package installation approach, we install `virtualenv`.
+Next, we install `virtualenv`.
 
 This helps provide environment support on the EC2 machine.
 
@@ -364,71 +340,21 @@ Until we update this variable:
 
 So this step connects the local code to the cloud tracking server.
 
-## Step 14. Run `app.py` And Notice The First Issue
+## Step 14. Set The MLflow Tracking URI Locally
 
-After updating the URI, we run:
-
-```bash
-python app.py
-```
-
-At this point, the model starts running and the MLflow logic starts working, but an issue appears:
-
-```text
-resource does not exist
-```
-
-## Why This Happens
-
-This happens because just writing the URL in the code is not enough in this setup.
-
-We also need to make sure the MLflow tracking URI is properly set in the local environment so the run knows exactly which tracking server to use.
-
-## Step 15. Set The MLflow Tracking URI Locally
-
-There are two ways shown for fixing the tracking URI issue.
-
-### Option 1. Export The Environment Variable In The Terminal
-
-We can export the tracking URI from the terminal.
-
-The idea is:
+Before running the project, we set the tracking URI in our local terminal:
 
 ```bash
 export MLFLOW_TRACKING_URI=http://<public-ip>:5000
 ```
 
-Since this is easier in a Unix-style shell, using `git bash` is suggested for this approach.
+## Why This Step Matters
 
-If needed, we first activate the environment and then export the variable.
+This makes sure the local process knows exactly which MLflow tracking server it should use.
 
-## Why This Works
+## Step 15. Run `app.py`
 
-This makes the tracking server URI available to the local process through an environment variable.
-
-That helps MLflow understand exactly where the tracking backend is located.
-
-### Option 2. Set The Environment Variable In Python Code
-
-Instead of exporting from the terminal, we can also set it directly inside `app.py` using:
-
-```python
-import os
-os.environ["MLFLOW_TRACKING_URI"] = "http://<public-ip>:5000"
-```
-
-## Which Option To Use
-
-Both approaches work.
-
-We can choose based on preference:
-
-- terminal export is useful for session-based setup
-- Python environment variable setup is useful if we want the configuration directly in code
-
-## Step 16. Run `app.py` Again
-
-After setting the tracking URI correctly, we run the script again:
+After setting the tracking URI correctly, we run the script:
 
 ```bash
 python app.py
@@ -447,7 +373,7 @@ This means:
 - artifacts are logged
 - model information is registered in MLflow
 
-## Step 17. Verify The Run In MLflow UI
+## Step 16. Verify The Run In MLflow UI
 
 Now when we refresh the MLflow UI in the browser, we should see the tracked experiment.
 
@@ -468,7 +394,7 @@ The artifacts section can show files such as:
 
 This confirms that the run is not only logged as metadata but also stores useful outputs.
 
-## Step 18. Verify The Artifacts In S3
+## Step 17. Verify The Artifacts In S3
 
 After the run succeeds, we also check the S3 bucket.
 
@@ -493,7 +419,7 @@ So we verify the setup in two places:
 - MLflow UI for experiment tracking
 - S3 for artifact storage
 
-## Step 19. Update The Project README
+## Step 18. Update The Project README
 
 At this stage, it is also useful to update the project `README.md` with:
 
@@ -507,25 +433,7 @@ This helps us because:
 - it is easier to repeat the process later
 - the README becomes a ready-made checklist
 
-## Practical Learning From This Part
-
-One important thing we learn here is that real cloud setup is not always perfectly smooth.
-
-Sometimes:
-
-- a command from documentation may need adjustment
-- a package installation method may fail
-- a URI may need to be set in another place
-
-This is normal in real projects.
-
-The important part is:
-
-- identify the issue
-- understand why it happened
-- adjust the setup and continue
-
-## Step 20. Clean Up AWS Resources After Practice
+## Step 19. Clean Up AWS Resources After Practice
 
 After the experiment tracking has been verified, the final step is cleanup.
 
@@ -573,7 +481,6 @@ By the end of this part, we have:
 - configured AWS credentials inside EC2
 - launched the MLflow tracking server on port `5000`
 - connected the local `app.py` to the remote tracking URI
-- fixed the tracking URI issue locally
 - logged an experiment successfully
 - verified the run in MLflow UI
 - verified the artifacts in S3

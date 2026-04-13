@@ -1,6 +1,6 @@
 # Introduction To MLflow In AWS
 
-![AWS MLflow](../../Images/aws-mlflow.png)
+![alt text](../Images/aws-mlflow.png)
 
 ## What We Are Learning In This Part
 
